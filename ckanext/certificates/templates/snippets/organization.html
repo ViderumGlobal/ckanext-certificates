@@ -1,0 +1,21 @@
+{% ckan_extends %}
+
+{% block info %}
+  {{ super() }}
+
+  {% block package_certificate %}
+    {% if h.has_certificate(c.pkg_dict) %}
+      <div class="module module-narrow module-shallow context-info">
+        <h2 class="module-heading"><i class="fa fa-certificate"></i> {{ _('ODI badge') }}</h2>
+        <section class="module-content">
+          {% set certificate_data = h.get_certificate_data(c.pkg_dict) %}
+          <a href="{{ certificate_data.certificate_url }}" title="{{ certificate_data.cert_title }}" target="_blank">
+            <img src="{{ certificate_data.badge_url }}" />
+          </a>
+        </section>
+      </div>
+    {% endif %}
+  {% endblock %}
+
+{% endblock %}
+

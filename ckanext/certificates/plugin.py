@@ -14,6 +14,7 @@ class CertificatesPlugin(p.SingletonPlugin):
     available.
     '''
     p.implements(p.ITemplateHelpers, inherit=True)
+    p.implements(p.IConfigurer, inherit=True)
 
     def get_helpers(self):
         """
@@ -28,3 +29,8 @@ class CertificatesPlugin(p.SingletonPlugin):
             'get_certificate_data': helpers.get_certificate_data,
         }
         return helper_dict
+
+    # IConfigurer
+
+    def update_config(self, config):
+        p.toolkit.add_template_directory(config, 'templates')
