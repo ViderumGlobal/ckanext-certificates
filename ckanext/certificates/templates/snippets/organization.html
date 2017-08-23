@@ -4,7 +4,7 @@
   {{ super() }}
 
   {% block package_certificate %}
-    {% if h.has_certificate(c.pkg_dict) %}
+    {% if c.pkg_dict and h.has_certificate(c.pkg_dict) %}
       <div class="module module-narrow module-shallow context-info">
         <h2 class="module-heading"><i class="fa fa-certificate"></i> {{ _('ODI badge') }}</h2>
         <section class="module-content">
